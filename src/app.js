@@ -111,6 +111,7 @@ function addContentNumbers(event) {
       "data",
       JSON.stringify({ name: window.userName, score: finalResult })
     );
+    setData();
   }
 }
 
