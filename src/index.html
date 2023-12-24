@@ -38,24 +38,64 @@
           />
         </div>
         <div>
-          <span id="Leader-board" data-val="2">See Leaderboard</span>
+          <span class="Leader-board" data-val="2">See Leaderboard</span>
           <span>|| </span>
-          <span id="update-name" data-val="3">Update Name</span>
+          <span class="update-name" data-val="3">Update Name</span>
+        </div>
+      </div>
+      <div class="main-content-v3 ">
+        <div id="random-no"></div>
+      </div>
+      <div class="main-content-v4">
+        <div class="user-btn-cls-input">
+          <div id="output" contenteditable="true"></div>
+          <div id="draggableContainer">
+              <div class="numbers-input">1</div>
+              <div class="numbers-input">2</div>
+              <div class="numbers-input">3</div>
+             
+          </div>
+          <div id="draggableContainer">
+              <div class="numbers-input">4</div>
+              <div class="numbers-input">5</div>
+              <div class="numbers-input">6</div>
+             
+          </div>
+          <div id="draggableContainer">
+              <div class="numbers-input">7</div>
+              <div class="numbers-input">8</div>
+              <div class="numbers-input">9</div>
+          </div>
+          <div id="draggableContainer">
+              <div class="numbers-input" style="background-color: transparent; border: transparent;"></div>
+              <div class="numbers-input">0</div>
+              <div class="numbers-input" style="background-color: transparent; border: transparent;"></div>
+          </div>
+          <div class="user-btn-cls">
         </div>
       </div>
     </section>
-
-    <div class="main-content-v3">
-      <div id="random-no"></div>
-      <div class="user-btn-cls">
-        <input id="okay-button" type="submit" value="Okay" />
+    <div class="main-content-v5">
+      <div id="result">Your Final Score is</div>
+      <div>
+        <span class="Leader-board" data-val="2">See Leaderboard</span>
+        <span>|| </span>
+        <span class="update-name" data-val="3">Update Name</span>
       </div>
     </div>
-    <div class="main-content-v4">
-      <div class="user-btn-cls">
-        <form onsubmit="inputSubmitHandler(event)">
-          <input id="enteredNumber" type="number" name="enteredNumber" />
-        </form>
+    <div class="main-content-v6">
+      <h1>Leader Board</h1>
+        <div class="leaderboard-table">
+          <table>
+          <tr>
+            <th>Name</th>
+            <th>Score</th>
+          </tr>
+          <tr>
+            <td id="user"></td>
+            <td id="score"></td>
+          </tr>
+       </table>
       </div>
     </div>
 

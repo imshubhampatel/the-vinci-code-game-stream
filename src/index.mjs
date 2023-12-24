@@ -31,6 +31,7 @@ class Game {
     this.generatedNumbers = [];
     this.enteredNumbers = [];
     this.level = level;
+    this.endGame = false;
     this.generateNumbersForLevel();
   }
 
@@ -42,9 +43,6 @@ class Game {
 
   displayNumbersForLevel() {
     for (let i = 0; i < this.level; i++) {
-      let randomNumber = document.getElementById("random-no");
-      mainContentV3.classList.add("isActive");
-      randomNumber.innerHTML = this.generatedNumbers[i];
       this.generatedNumbers[i];
     }
   }
@@ -59,33 +57,38 @@ class Game {
 
   getNumbersFromUser(number) {
     for (let i = 0; i < this.level; i++) {
-      let enteredValue = parseInt(number);
+      let enteredValue = number;
+      console.log({ enteredValue });
       if (enteredValue === "" || enteredValue === null) {
         enteredValue = NaN;
       }
-      this.enteredNumbers.push(Number(enteredValue));
+      this.enteredNumbers = number;
     }
+    this.gameLoop();
   }
+
   getEnteredNumber() {
     return this.enteredNumbers;
   }
 
   verifyLevel() {
     for (let i = 0; i < this.level; i++) {
+      console.log(this.enteredNumbers, this.generatedNumbers, this.level);
       if (this.enteredNumbers[i] !== this.generatedNumbers[i]) return false;
     }
     return true;
   }
 
   gameLoop() {
-    this.generateNumbersForLevel();
-    this.displayNumbersForLevel();
-    this.getNumbersFromUser();
+    this.verifyLevel();
+    console.log(this.verifyLevel());
     if (this.verifyLevel()) {
       this.updateLevel(this.level + 1);
-      this.gameLoop();
+      this.enteredNumbers = [];
+      this.generatedNumbers = [];
+      this.generateNumbersForLevel();
     } else {
-      alert(`Your score is: ${this.level}`);
+      this.endGame = true;
     }
   }
 }
