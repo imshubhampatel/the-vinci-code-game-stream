@@ -3,13 +3,64 @@
   <head>
     <title>JavaScript Sandbox</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body>
-      <h1>Welcome to The Vinci Code.</h1>
-      <section id="game">
-        
-      </section>
-    <script src="./index.mjs" type="module"></script>
+    <section class="user-form-cls">
+      <div class="main-content">
+        <h1 class="wel-head welcome-text">Welcome to The Vinci Code.</h1>
+        <form class="user-form" onsubmit="getNameHandler(event)">
+          <div class="user-name-cls">
+            <input
+              id="user-name"
+              name="userName"
+              type="text"
+              placeholder="Enter your name"
+            />
+            <span id="error"></span>
+          </div>
+          <div class="user-btn-cls">
+            <input id="user-submit" type="submit" value="submit" />
+          </div>
+        </form>
+      </div>
+      <div class="main-content-v2">
+        <h1 class="wel-head-content welcome-text">
+          Welcome to The Vinci Code.
+        </h1>
+        <div class="user-btn-cls">
+          <input
+            id="user-start-btn"
+            data-val="1"
+            type="submit"
+            value="Start Game"
+          />
+        </div>
+        <div>
+          <span id="Leader-board" data-val="2">See Leaderboard</span>
+          <span>|| </span>
+          <span id="update-name" data-val="3">Update Name</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-content-v3">
+      <div id="random-no"></div>
+      <div class="user-btn-cls">
+        <input id="okay-button" type="submit" value="Okay" />
+      </div>
+    </div>
+    <div class="main-content-v4">
+      <div class="user-btn-cls">
+        <form onsubmit="inputSubmitHandler(event)">
+          <input id="enteredNumber" type="number" name="enteredNumber" />
+        </form>
+      </div>
+    </div>
+
+    <section id="game"></section>
+    <script src="./index.mjs"></script>
+    <script src="./app.js"></script>
   </body>
 </html>

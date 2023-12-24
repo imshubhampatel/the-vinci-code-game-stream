@@ -1,14 +1,3 @@
-import "./styles.css";
-/*
-1. Get the user's name
-2. Show a menu
-3. Menu items:
-  a. Start New Game
-  b. See Leaderboard
-  c. Update Name
-*/
-const myGameContainer = document.getElementById("game");
-
 class Game {
   constructor(container) {
     this.container = container;
@@ -19,16 +8,11 @@ class Game {
   }
 
   start() {
-    this.name = prompt("Enter your name:") || "Guest";
-    this.displayMenu();
+    this.updateLevel(1);
   }
 
   handleMenuClick = function (event) {
     switch (event.target.dataset?.val) {
-      case "1":
-        this.updateLevel(1);
-        this.gameLoop();
-        break;
       case "2":
         console.log("Will Show Leaderboard Now...");
         break;
@@ -39,12 +23,7 @@ class Game {
   }.bind(this);
 
   displayMenu() {
-    this.container.innerHTML = `Welcome ${this.name},
-    <ol>
-      <li data-val="1">Start New Game</li>
-      <li data-val="2">See Leaderboard</li>
-      <li data-val="3">Update Name</li>
-    </ol>`;
+    this.container.innerHTML = `Welcome ${this.name},`;
     this.container.removeEventListener("click", this.handleMenuClick);
     this.container.addEventListener("click", this.handleMenuClick);
   }
@@ -52,6 +31,7 @@ class Game {
     this.generatedNumbers = [];
     this.enteredNumbers = [];
     this.level = level;
+    this.generateNumbersForLevel();
   }
 
   generateNumbersForLevel() {
@@ -62,20 +42,32 @@ class Game {
 
   displayNumbersForLevel() {
     for (let i = 0; i < this.level; i++) {
-      alert(this.generatedNumbers[i]);
+      let randomNumber = document.getElementById("random-no");
+      mainContentV3.classList.add("isActive");
+      randomNumber.innerHTML = this.generatedNumbers[i];
+      this.generatedNumbers[i];
     }
   }
 
-  getNumbersFromUser() {
+  getNumbersFromLevel() {
+    return this.generatedNumbers;
+  }
+
+  getLevels() {
+    return this.level;
+  }
+
+  getNumbersFromUser(number) {
     for (let i = 0; i < this.level; i++) {
-      let enteredValue = prompt(
-        "Enter values in order one at a time: (press enter after every value)",
-      );
+      let enteredValue = parseInt(number);
       if (enteredValue === "" || enteredValue === null) {
         enteredValue = NaN;
       }
       this.enteredNumbers.push(Number(enteredValue));
     }
+  }
+  getEnteredNumber() {
+    return this.enteredNumbers;
   }
 
   verifyLevel() {
@@ -98,5 +90,4 @@ class Game {
   }
 }
 
-let myGameInstance = new Game(myGameContainer);
-myGameInstance.start();
+window.Game = Game;
